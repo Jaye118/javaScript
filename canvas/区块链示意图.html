@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div class="workflow_left_content" style="width:100% ;overflow-x: auto">
+        <canvas id="workflow" height=300></canvas>
+    </div>
+
+</body>
+<script src="../jquery-1.11.3.js"></script>
+<script type="text/javascript">
+
+$(function(){
+    var cont = document.getElementById("workflow").getContext("2d");
+    document.getElementById("workflow").width = 10 * 180;//根据数据的多少来设定画布的宽度
+    for (var i =0; i<11; i++){
+        arcTopStroke(cont,200 + i*150 ,100 ,20, i, 10,"yyyy-MM-dd hh:mm:ss","hash","createBy");
+        arcStroke(cont,100 + i*150 , 180 ,20, i, 10, "text");
+        lineStroke(cont,110 + i*150 , 165  ,20, i, 10)
+    }
+
+});
+
+//画top圆
+function arcTopStroke(cont, x, y, r, i, len, time, hash, ID){
+    cont.beginPath();
+    cont.arc(x, y, r, 0, 2*Math.PI);
+    cont.lineWidth = 5;
+    cont.strokeStyle = "#999999";
+    cont.stroke();
+    cont.closePath();
+    cont.fillText(time, x, y-45);
+    cont.fillText(hash, x, y-30);
+    cont.fillText(ID, x - 120, y+140);
+
+    if( i < len ){
+        cont.moveTo(x + r, y);
+        cont.lineTo(x + r + 110, y);
+        cont.lineWidth = 2;
+        cont.stroke();
+    }
+}
+
+//画底部圆
+function arcStroke(cont, x, y, r, i, len, activityName) {
+
+    cont.beginPath();
+    cont.arc(x, y, r, 0, 2*Math.PI);
+    cont.lineWidth = 5;
+    cont.strokeStyle = "#bcbcbc";
+    cont.stroke();
+    cont.closePath();
+    cont.textAlign = "center";
+    cont.fillText(activityName, x, y+38);
+    cont.closePath();
+
+    if( i < len ){
+        cont.moveTo(x + r, y);
+        cont.lineTo(x + r + 110, y);
+        cont.lineWidth = 2;
+        cont.stroke();
+    }
+}
+
+//斜线
+function lineStroke(cont, x, y) {
+    cont.moveTo(x, y);
+    cont.lineTo(x + 75, y-55);
+    cont.lineWidth = 2;
+    cont.stroke();
+
+}
+</script>
+</html>

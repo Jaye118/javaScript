@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div>
+        <strong>
+            <span>
+                <i></i>
+            </span>
+        </strong>
+    </div>
+</body>
+
+<script type="text/javascript">
+    //封装函数，返回元素elem的第n层祖先元素节点
+    function retParent(elem, n){
+       while( elem && n){// elem上级没有元素时，输出null
+           elem = elem.parentElement;
+           n --;
+       }
+        return elem;
+    }
+
+    var i  = document.getElementsByTagName("i")[0];
+    //控制台输入 retParent(i, 2) 看效果
+
+
+</script>
+</html>

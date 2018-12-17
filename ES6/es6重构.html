@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script>
+    // 1
+    var calculate = function(x, y, z){
+        if(typeof x != 'number'){ x = 0 }
+        if(typeof y != 'number'){ y = 6 }
+        
+        var dwt = x % y;
+        var result;
+        if(dwt == z ){ result = true }
+        if(dwt != z ){ result = false }
+        return result;
+    }
+
+    // es重构以上代码：
+    const calculate = (x, y , z) => {
+        x = typeof x !== 'number' ? 0 : x;
+        y = typeof y !== 'number' ? 0 : y;
+        return x % y === z
+    }
+
+
+    // 2
+     
+    var body = request.body
+    var username = body.username
+    var password = body.password
+
+    // 重构
+    const { body, body:{ username, password} } = request
+
+
+</script>
+</html>

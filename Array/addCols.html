@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>增加列</title>
+  <script type="text/javascript">
+    let sheet1 = {
+      rows: [
+        ["NAME", "IN_DEPT"],
+        ["佟", "呼"],
+        ["夏", "放"]
+      ]
+    };
+
+    let sheet2 = {
+      rows: [
+        ["编码", "名称", "类别"],
+        ["EB", "呼", 1],
+        ["56", "放", 0]
+      ]
+    };
+
+    function fn(sheet1, sheet2) {
+      let rows1 = sheet1.rows;
+      let len1 = rows1.length;
+      let rows2 = sheet2.rows;
+      let len2 = rows2.length;
+      let DEPTIndex = rows1[0].indexOf("IN_DEPT");
+      let deptIndex = rows2[0].indexOf("名称");
+
+      rows1[0].splice(DEPTIndex + 1, 0, "科室类别")
+      for (let i = 1; i < len1; i++) {
+        let DEPTName = rows1[i][DEPTIndex]; // 表1 “IN_DEPT” 的 value
+
+        for (let j = 1; j < len2; j++) {
+          let deptName = rows2[j][deptIndex]; // 表2 “名称” 的 value
+          if (deptName === DEPTName) {
+            rows1[i].splice(DEPTIndex + 1, 0, rows2[j][deptIndex + 1])
+            break
+          }
+        }
+      }
+      return sheet1
+    }
+
+    console.log(fn(sheet1, sheet2))
+  </script>
+</head>
+
+<body>
+
+
+</body>
+
+</html>

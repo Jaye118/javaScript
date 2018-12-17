@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Explaining文字水平平移动画</title>
+    <style>
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+            positionMessage();
+        };
+        function moveMessage(){
+            var elem = document.getElementById("message");
+            var xpos = parseInt(elem.style.left);
+            var ypos = parseInt(elem.style.top);
+
+            if(xpos <1000){
+                xpos++;
+            }else{
+                xpos = 100;
+            }
+
+            elem.style.left = xpos+"px";
+            elem.style.top = ypos+"px";
+            movement = setTimeout("moveMessage()",10);
+        }
+        function positionMessage(){
+            var elem = document.getElementById("message");
+            elem.style.position="absolute";
+            elem.style.left="50px";
+            elem.style.top="100px";
+            movement = setTimeout("moveMessage()",1000);
+        }
+
+    </script>
+</head>
+<body>
+    <p id="message">文字平移</p>
+</body>
+</html>

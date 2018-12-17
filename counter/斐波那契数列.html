@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+       //方法1：前两个数相加，等于第三个数
+	   /*var n = parseInt(window.prompt("input"));
+	   var first = 1;
+	   var second = 1;
+	   var third ;
+
+	   if(n>2){
+			for(var i = 0; i< n-2; i++){
+				third = first + second;
+				first = second;
+				second = third;
+			}
+			document.write(third);
+	   }else{
+			document.write(1);
+	   }*/
+
+
+
+		//方法2：
+		//1找规律
+		//2找出口
+		//fb(a) = fb(a-1) + fb(a-2)\
+		function fb(a){
+			if(a == 1 || a == 2){
+				return 1;
+			}
+			return fb(a - 1) + fb(a - 2);
+		}
+
+		alert(fb(10));
+
+
+    </script>
+     </head>
+    <body>
+
+    </body>
+</html>

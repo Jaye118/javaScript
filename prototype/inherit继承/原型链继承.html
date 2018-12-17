@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    function Super(name){
+        this.name = name;
+        this.color = ['red','green'];
+    }
+    Super.prototype.sayname = function(){
+        console.log(this.name);
+    };
+
+    function Sub(name,age){
+        //通过构造函数的方式继承Super的属性
+        Super.call(this,name);
+        //定义自己的属性
+        this.age = age;
+    }
+
+    //通过原型链的方式继承方法
+    Sub.prototype = new Super();
+    Sub.prototype.constructor = Sub;
+
+    var ins1 = new Sub('ins1',18);
+
+    //缺点：会调用两次超类的构造函数，一次在Super.call(this, name);
+    // 一次在Sub.prototype = new Super();
+    //导致Sub原型上有属性name、age，Sub实例上也有属性name、age。
+
+
+
+
+</script>
+</html>

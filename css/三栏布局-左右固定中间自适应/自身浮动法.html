@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			/* 使用对左右使用分别使用float:left和float:right，float使左右两个元素脱离文档流，中间元素 center 脱离正常文档流，使用margin指定左右外边距对其进行一个定位。 */
+			html,body{margin: 0; width: 100% }
+			#left, #right{
+				width: 200px;
+				height: 200px;
+				background-color: red;
+			}
+			#left{
+				float: left;
+			}
+			#right{
+				float:right;
+			}
+			#center{
+				margin: 0 210px;
+				background-color: aquamarine;
+				height: 200px;
+			}
+
+		</style>
+     </head>
+    <body>
+			<div id = "left">我是左边</div>
+			<div id = "right">我是右边</div>
+			<div id = "center">我是中间</div>
+	
+    </body>
+</html>

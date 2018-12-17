@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+    var str = "abc";
+	str += 1;
+	var test = typeof(str);//test == "string"
+	if(test.length == 6){
+		test.sign = "typeof返回结果可能是String";
+		//new String(test).sign = 'typeof返回结果可能是String'
+	}
+	//再new String(test).sign
+	console.log(test.sign);//undefined
+
+
+	//
+	function Person(name, age, sex){
+        var a = 0;
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        function sss(){
+            a ++;
+            document.write(a);
+        }
+        this.say = sss;
+    }
+    var oPerson = new Person();
+    oPerson.say();//1
+    oPerson.say();//2
+    var oPerson1 = new Person();//重新构建Person，a=0；不同的执行上下文
+    oPerson1.say();//1
+
+</script>
+</html>

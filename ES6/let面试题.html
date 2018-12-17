@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script>
+    //let声明的变量只在代码块内有效
+    /*for(let i=0; i<10; i++){
+
+    }
+    console.log(i);*/
+    //ReferenceError:i is not defined
+    var funcs = [];
+    for(var i = 0; i < 10; i++){
+        funcs.push(function(){ console.log(i) })
+    }
+    funcs.forEach(function(func){
+        func();
+    })
+    // 输出10 十次
+    
+
+    // 依次输出 0-9
+    // ES5
+    var funcs = [];
+    for(var i = 0; i < 10; i++){
+        funcs.push(
+            (function(value){
+                return function(){ console.log(value) }
+            })
+            
+        )
+    }
+    funcs.forEach(function(func){
+        func()
+    })
+
+    // es6
+    const funcs = [];
+    for(let i = 0; i<10; i++){
+        funcs.push(function(){
+            console.log(i)
+        })
+    }
+    funcs.forEach(func => func())
+</script>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+</body>
+
+<script type="text/javascript">
+    var obj = {
+        a:"abc",
+        name:123,
+        sex:"female",
+        card:['visa', 'unionpay'],//引用值
+        wife:{
+            name:"bbb",
+            son:{
+                name:"ccc"
+            }
+        }
+    };
+    //遍历对象：for in
+    //1判断是不是原始值        typeof()
+    //2判断是数组 or 对象      instanceof  constructor(这两个有跨父子域问题)  推荐使用->toString
+    //3建立相应的数组 or 对象
+    //4引用值当作原始值，再一次拷贝
+    var obj1 = {
+        //分析原始值
+        name:obj.name,
+        age:123,
+        //分析引用值
+        //card:[obj.card[0], obj.card[1]]
+        wife:{
+            //循环拷贝步骤
+        }
+    };
+    function clone(origin, target){//origin 原始值， target目标值
+        var target = target || {}; //防止用户不传入target
+        for(var prop in origin){
+            target[prop] = origin[prop];
+        }
+        return target;
+    }
+    clone(obj);
+    clone(obj,  obj1);
+
+</script>
+</html>

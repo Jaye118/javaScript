@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript">
+//预编译4步
+/*
+	1.创建GO对象| AO
+	2.找形参和变量声明，将形参名和变量作为AO属性名，值为undefined
+	3.将实参和形参统一
+	4在函数体里找到函数声明，值赋予函数体
+*/
+
+/*
+GO{     2 找声明      3 实参形参统一     4函数声明        5执行
+    test:undefined	   undefined          fn      
+}	
+*/
+
+console.log(test);//fn
+function test(test){
+	console.log(test);//fn
+
+	var test = 234;// ->234
+	console.log(test);//234
+	function test(){}
+	
+}
+
+//执行之前先创建AO
+/*
+AO{     2 找声明      3 实参形参统一     4函数声明        5执行
+   test:undefined	     1               fn
+}	
+*/
+
+test(1);
+var test = 123;//test->123
+
+
+
+
+
+
+</script>
+</head>
+<body>
+    
+</body>
+</html>

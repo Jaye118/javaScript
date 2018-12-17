@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+</body>
+
+<script type="text/javascript">
+    //闭包
+    function Person(name){
+        //var this = {
+        //
+        //  makeMoney:function(){}
+        //  offer:function(){}
+        //
+        // }
+        var money = 100; //私有化变量，不希望外部访问到，只能通过makeMoney进行改动
+        this.name = name;
+        this.makeMoney = function(){
+            money ++;
+        };
+        this.offer = function(){
+            money --;
+        }
+    }
+    var p = new Person();
+
+
+</script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+
+    function Person(name,age,job){
+        this.name = name;
+        this.age = age;
+        this.job = job;
+        this.friend = ["hh"]
+    }
+    Person.prototype = {
+        constructor:Person,
+        sayName: function(){
+            alert(this.name)
+        }
+    }
+    var person1 = new Person("hh", 29, "设计师");
+    var person2 = new Person("xx",30, "厨师");
+    person1.friend.push("hua")
+    alert(person1.friend)// hh hua
+    alert(person2.friend)// hh  不受影响
+
+    
+</script>
+</html>

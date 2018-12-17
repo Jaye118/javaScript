@@ -1,0 +1,52 @@
+
+
+data:
+[
+	{
+		resourceGroup:{ name: "水果"}
+		resources：[
+			{ name: "水果_苹果"},
+			{ name: "蔬菜_茄子"},
+			{ name: "蔬菜_番茄"},
+			{ name: "水果_葡萄"},
+			{ name: "水果_桃子"}
+		]
+	},
+	{
+		resourceGroup:{ name: "水果"}
+		resources：[
+			{ name: "水果_苹果"},
+			{ name: "蔬菜_茄子"},
+			{ name: "蔬菜_番茄"},
+			{ name: "水果_葡萄"},
+			{ name: "水果_桃子"}
+		]
+	}
+
+]
+
+
+_this.roleTree = result.data;         
+_this.roleTree.forEach(rootM=>{
+
+	let newGroup =[];
+	rootM.resources.forEach(resM=>{
+		let newName = resM.name.split("_")[0]; 
+		let exist = newGroup.filter(function(m){
+			return m.name ==newName;
+		})
+		resM.name =  resM.name.split("_")[1];
+		resM.groupName =  newName;
+		if(exist.length>0)
+		{
+			newGroup.forEach(newgroupM=>{
+				if(newgroupM.name==newName){
+					newgroupM.arr.push(resM);
+				}
+			});
+		}
+		else{
+			newGroup.push({name:newName,arr:[resM]});
+		}
+	});
+})

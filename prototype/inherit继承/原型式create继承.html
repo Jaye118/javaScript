@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+	/* 
+	 Object.create()
+	 接受2个参数：1、用作新对象原型的对象；2、可选，新对象定义额外属性的对象
+	*/
+	var person = {
+		name: "小贝",
+		friends:["李大嘴","秀才"]
+	}
+
+	var anotherPerson = Object.create(person);
+	anotherPerson.name = "Greg";
+	anotherPerson.friends.push("Bob");
+
+	var yetanotherPerson = Object.create(person);
+	yetanotherPerson.name = "Lily";
+	yetanotherPerson.friends.push("Hie");
+
+	alert(person.friends);// "李大嘴","秀才","Bob", "Hie"
+
+
+	// 关于第二个参数  同理于  Object.defineProperties()
+	var person = {
+		name: "小贝",
+		friends:["李大嘴","秀才"]
+	}
+
+	var anotherPerson = Object.create(person, {
+		name:{
+			value:'无双'
+		}
+	})
+	alert(anotherPerson.name);// 无双
+
+</script>
+
+</html>

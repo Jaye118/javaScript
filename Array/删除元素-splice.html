@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+        // 删除数组指定某个元素 定义方法remove
+        // splice() 方法向/从数组中添加/删除项目，然后返回被删除的项目。
+        // splice( index位数, 数量, 新添加 ) 
+        // 该方法会改变原始数组
+        Array.prototype.remove = function (val) {
+            var index = this.indexOf(val) ;
+            if ( index > -1) {
+                this.splice(index, 1)
+            }
+
+        }
+
+        //这样就构造了这样一个函数，比如我有有一个数组：
+
+        var emp = ['abs','dsf','sdf','fd']
+        // 假如我们要删除其中的 'fd' ,就可以使用：
+
+        emp.remove('fd');
+
+        // delete方法删除掉数组中的元素后，会把该下标出的值置为undefined,数组的长度不会变
+
+
+
+    </script>
+</head>
+
+<body>
+
+
+</body>
+
+</html>

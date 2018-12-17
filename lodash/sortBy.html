@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="./lodash.js"></script>
+  <script type="text/javascript">
+    var newSortArr = [ '2017/10/10  18:09:51', '2017/6/15  10:48:02' ];
+
+    var res =  _.sortBy(newSortArr, function (o) {
+        return new Date(o).getTime()
+      });
+      console.log(res)
+  </script>
+</head>
+
+<body>
+
+
+</body>
+
+</html>

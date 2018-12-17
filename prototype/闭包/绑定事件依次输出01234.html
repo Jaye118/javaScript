@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <ul>
+		<li>a</li>
+		<li>a</li>
+		<li>a</li>
+		<li>a</li>
+		<li>a</li>
+	</ul>
+</body>
+
+<script>
+    var liCol = document.getElementsByTagName("li");
+	var len = liCol.length;
+	for(var i = 0; i <len ;i++){
+		(function(i){
+			liCol[i].addEventListener('click',function(){
+				console.log(i);
+			},false)
+		}(i))
+	}
+</script>
+</html>

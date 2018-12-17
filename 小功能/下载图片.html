@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+	
+
+</head>
+<body>
+
+	<a  href="https://sit.xxxxxx.com/mc_files/10088/CASE_LIBRARY/bd1e2add-4360-47ff-8437-343fc33be1ee" download="这是图片.jpg">
+		<img src="https://sit.xxxxxx.com/mc_files/10088/CASE_LIBRARY/bd1e2add-4360-47ff-8437-343fc33be1ee" />
+	</a>
+
+	<button onclick="lodeImg()">下载图片</button>
+</body>
+<script type="text/javascript">
+
+	// 不兼容火狐
+	function lodeImg (){
+		var $a = document.createElement('a');
+		var img = 'https://xxxxxx.com/wxa_dev/posterimg/1528949333600.png';
+		$a.setAttribute("href", img);
+		$a.setAttribute("download", "照片名字");
+		var evObj = document.createEvent('MouseEvents');
+		evObj.initMouseEvent( 'click', true, true, document.defaultView , 0, 0, 0, 0, 0, true, false, true, false, 0, null);
+		//                               冒泡  可撤销 document.defaultView 
+		// evObj.initEvent("click", false, false);
+		$a.dispatchEvent(evObj);
+
+	}
+	 
+</script>
+</html>

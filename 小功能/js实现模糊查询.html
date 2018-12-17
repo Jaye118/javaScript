@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#Result1 tr:eq(1)").find("input").each(function(){
+                $(this).keyup(function(){
+                    $(this).val($(this).val().replace(/'/g,''));
+                    if(event.keyCode == 13){
+                        dimSearch();
+                        return
+                    }
+                })
+                $(this).change(function(){
+                    $(this).val($(this).val().replace(/'/g,''));
+                    dimSearch();
+                    return;
+                })
+            })
+
+            function dimSearch(){
+                var accountNameStr = $("#accountNameStr").val().replace(/'/g, '');
+                var accountNoStr = $("#accountNoStr").val().replace(/'/g, '');
+                var accountShortStr = $("#accountShortStr").val().replace(/'/g, '');
+                var branchBankNoStr = $("#branchBankNoStr").val().replace(/'/g, '');
+                var branchBankNameStr = $("#branchBankNameStr").val().replace(/'/g, '');
+                var showTrs = $("#Result1 tr").eq(1).nextAll();
+
+                showTrs.each(function(){
+                    if( $(this).find("td:eq(1)").text().indexOf(accountNameStr) > -1
+                        && $(this).find("td:eq(2)").text().indexOf(accountNoStr) >-1
+                        && $(this).find("td:eq(3)").text().indexOf(accountShortStr) > -1
+                        && $(this).find("td:eq(4)").text().indexOf(branchBankNoStr) > -1
+                        && $(this).find("td:eq(5)").text().indexOf(branchBankNameStr) > -1
+                    ){
+                        $(this).show()
+                    }else{
+                        $(this).hide()
+                    }
+                })
+                if( $("#Result1 tr").eq(1).nextAll("tr:visible").length == 0 ){
+                    $("#Result1").append("<tr><td colspan='6' style='color: red'>没有符合条件的记录！</td></tr>")
+                }
+            }
+        })
+
+    </script>
+</head>
+<body>
+    <table id="Result1">
+        <tr>
+            <th></th>
+            <th>账户名称</th>
+            <th>账户</th>
+            <th>户名简称</th>
+            <th>开户行号</th>
+            <th>开户行名称</th>
+            <th></th>
+        </tr>
+        <tr class="dim-check">
+            <td></td>
+            <td><input type="text" maxlength="50" id="accountNameStr" name="1" value=""></td>
+            <td><input type="text" maxlength="50" id="accountNoStr" name="2" value=""></td>
+            <td><input type="text" maxlength="50" id="accountShortStr" name="3" value=""></td>
+            <td><input type="text" maxlength="50" id="branchBankNoStr" name="4" value=""></td>
+            <td><input type="text" maxlength="50" id="branchBankNameStr" name="5" value=""></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="accounts" value="634"></td>
+            <td>安顺账号1</td>
+            <td>060156300000123</td>
+            <td>简称123</td>
+            <td>31375635312</td>
+            <td>中国银行股份有限公司</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="accounts" value="634"></td>
+            <td>安顺账号2</td>
+            <td>0601001100000123</td>
+            <td>安顺账号2-简称123</td>
+            <td>3137565012</td>
+            <td>南京银行股份有限公司</td>
+        </tr>
+        <tr class="">
+            <td><input type="radio" name="accounts" value="634"></td>
+            <td>安顺账号3</td>
+            <td>0601001154520123</td>
+            <td>安顺账号215</td>
+            <td>38968599012</td>
+            <td>建行有限公司</td>
+        </tr>
+    </table>
+
+</body>
+</html>

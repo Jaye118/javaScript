@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+
+    function Car(name,price){
+        this.name = name;
+        this.price = price;
+    }
+    Car.prototype.sell = function(){
+        alert("我是"+this.name+",我现在售价"+this.price+"万元");
+    }
+    var cam = new Car("凯美瑞",27);
+    cam.sell();
+</script>
+</html>

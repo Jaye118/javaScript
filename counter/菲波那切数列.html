@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function fib(max){
+            var t, 
+                a = 0, 
+                b = 1,
+                arr = [0,1];
+
+            while(arr.length < max ){
+                [a,b] = [b, a+b];
+                arr.push(b)
+            } 
+            return arr;
+        }
+
+        // 测试
+        console.log(fib(5));// [0, 1, 1, 2, 3]
+        console.log(fib(10)); // [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+
+    </script>
+     </head>
+    <body>
+
+    </body>
+</html>

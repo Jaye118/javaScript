@@ -1,0 +1,29 @@
+{
+	// es5: this指向调用时的函数，为函数c
+	var factory = function () {
+		this.a = 'a';
+		this.b = 'b';
+		this.c = {
+			a: 'a+',
+			b: function () {
+				return this.a
+			}
+		}
+	}
+	console.log(new factory().c.b());// 'a+'
+}
+
+{
+	// es6: this指向定义时的函数，为factory
+	var factory = function () {
+		this.a = 'a';
+		this.b = 'b';
+		this.c = {
+			a: 'a+',
+			b: () => {
+				return this.a
+			}
+		}
+	}
+	console.log(new factory().c.b());// 'a'
+}

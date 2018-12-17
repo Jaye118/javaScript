@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title></title>
+<script>
+    /***题目1***/
+    function makeAdder(x) {
+        return function(y) {
+            return x + y;
+        };
+    }
+    var add5 = makeAdder(5);
+    //var add10 = makeAdder(10);
+
+    console.log(add5);
+    console.log(add5(2));  // 7
+    //console.log(add10(2)); // 12
+
+
+    /**题目2：函数作为返回值**/
+    var max = 20;
+    var fn_A = function(){
+        var max = 10;
+        var fn_A1 = function(x){
+            if(x >= max){
+                console.log(x);
+            }else{
+                console.log(max);
+            }
+        };
+        return fn_A1;
+    };
+    var fn_B = fn_A();
+    fn_B(15);//15
+    fn_B(10);//10
+    //fn_A1作为返回值，复制为fn_B；
+    //当fn_B在执行时，用到了fn_A的作用域下面的max值，这时候的max是10，不是全局的20
+    //在创建fn_A1时，fn_A已经执行结束，但fn_A的作用域没有销毁，形成闭包。
+
+    /**题目3：函数作为参数传递**/
+    var max = 20;
+    var fn_A1 = function(x){ //调用时x=15,max =10，但是实际执行fn_A1出于全局作用域，所以max=20
+        if(x >= max){
+            console.log(x);
+        }else{
+            console.log(max);
+        }
+    };
+    var fn_A = function(fn){ //fn=fn_A1
+        var max = 10;
+        fn(15);
+    };
+    fn_A(fn_A1);//20
+    //fn_A1作为参数，传给fn_A；
+
+
+    /**题目4：写一个闭包**/
+    function makeAdder(x){
+        return function (y){
+            return x + y ;
+        }
+    }
+    var add5 = makeAdder(5);
+    var add10 = makeAdder(10);
+
+    console.log(add5(2));
+    console.log(add10(2));
+    //释放对闭包的引用
+    add5 = null;
+    add10 = null;
+
+    /**题目5：闭包只能取得包含函数中任何变量的最后一个值 **/
+    function test(){
+
+        var arr = [];
+        for(var i = 0;i < 5;i++){
+            arr[i] = function(){
+                return i;
+            };
+        }
+        for(var a = 0;a < 10;a++){
+            console.log(arr[a]());
+        }
+    }
+    test(); // 连续打印 5 个 5
+
+	/**题目6 **/
+	function func1 (){
+		var n = 99;
+		nAdd = function(){
+			this.n += 1;
+			console.log(this.n);
+		};
+		function func2(){
+			console.log(n);
+		}
+		return func2;
+	}
+	var result = func1();
+	result();
+	nAdd();
+	result();
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

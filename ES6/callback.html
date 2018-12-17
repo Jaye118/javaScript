@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>callback</title>
+</head>
+<body>
+
+</body>
+<script>
+//  当参数a大于10且参数fn2 是一个方法时 执行fn2
+	function fn1 (a, fn2) {
+		if (a > 10 && typeof fn2 == 'function'){
+			fn2();
+		}
+	}
+	
+	fn1(11, function () { console.log('this is callback!') } )
+
+</script>
+</html>

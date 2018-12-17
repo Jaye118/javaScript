@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        
+    </style>
+    <script type="text/javascript">
+        
+		/*function test (){
+			var arr = [];
+			for(var i = 0; i < 10; i++){
+				arr[i] = function(){ // function只是赋值给arr[i],并没有执行
+					document.write(i + " ")
+				}
+			}
+			return arr;
+		}
+		
+		var myArr = test();
+		for(var j = 0; j<10; j++){
+			myArr[j]();
+		}*/
+		//10 10 10 10 10 10 10 10 10 10
+
+
+		//改写下
+		function test1 (){
+			var arr = [];
+			for(var i = 0; i < 10; i++){
+				(function(j){
+					arr[j] = function(){ // function只是赋值给arr[i],并没有执行
+						document.write(j + " ")
+					}
+				}(i))
+				
+			}
+			return arr;
+		}
+		
+		var myArr1 = test1();
+		for(var j = 0; j<10; j++){
+			myArr1[j]();
+		}
+		//0 1 2 3 4 5 6 7 8 9
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

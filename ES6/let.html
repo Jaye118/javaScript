@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script>
+    //let声明的变量只在代码块内有效
+    /*for(let i=0; i<10; i++){
+
+    }
+    console.log(i);*/
+    //ReferenceError:i is not defined
+
+    var a = [];
+    for(let i=0; i<10; i++){
+        a[i] = function(){
+            console.log(i);
+        }
+    }
+    a[6]();
+    //6
+
+    //用var 声明j，在全局范围内有效，so全局只有一个变量j，每次循环，j的值都会改变;
+    //console.log(j)里的j指向的是全局的j
+    var aa = [];
+    for(var j=0; j<10; j++){
+        aa[j] = function(){
+            console.log(j);
+        }
+    }
+    aa[6]();
+    //10
+
+
+    //块级作用域
+    var tmp = new Date();
+    function f() {
+        console.log(tmp);//声明被提前，导致tmp为undefined
+        if (false) {
+            var tmp = 'hello world'; //声明被提前
+        }
+    }
+
+    f(); // undefined
+</script>
+</html>

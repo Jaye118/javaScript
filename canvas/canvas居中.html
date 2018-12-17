@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <!-- 外部的div设置margin值居中 -->
+    <div id="box" style="width: 300px;margin: 0 auto;">
+        <canvas id="canvas" height="200"></canvas>
+        <p>dfdafg</p>
+    </div>
+
+
+
+</body>
+<script src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+
+
+    $(function(){
+        document.getElementById("canvas").width = $("#box").width();
+        var cn = document.getElementById("canvas").getContext("2d");
+        cn.moveTo(  10,10);
+        cn.lineTo(100,100);
+        cn.stroke();
+
+    })
+
+
+
+</script>
+</html>

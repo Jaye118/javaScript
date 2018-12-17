@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title></title>
+	<script src="../jquery-1.11.3.js"></script>
+	<script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+</head>
+<body>
+	<div id="container" style="width: 600px;height:400px;"></div>
+	<script>
+		$(function () {
+			$('#container').highcharts({
+				chart: {
+					type: "spline" // 曲线
+				},
+				title: {
+					text: '折线图'
+				},
+				subtitle: {
+					text: '这里是副标题' // 隐藏标题：null
+				},
+				xAxis: {
+					title:{
+						text:"x轴标题"
+					},
+					categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+				},
+				yAxis: {
+					title:{
+						text:"y轴标题"
+					}
+				},
+				// series: [{
+				// 	data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+				// }]
+				series: [{
+					data: [-10, -5, 0, 5, 10, 15, 10, 10, 5, 0, -5],
+					zones: [{
+						value: 0,
+						color: '#f7a35c',
+						dashStyle: 'dot'
+					}, {
+						value: 10,
+						color: '#7cb5ec'
+					}, {
+						color: '#90ed7d'
+					}]
+				}],
+				credits:{
+					enabled: false // 禁用版权信息
+				}
+
+			});
+		});
+	
+	</script>
+</body>
+</html>

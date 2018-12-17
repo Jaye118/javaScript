@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+
+</body>
+
+<script>
+    Person.prototype = {
+        height:100
+    };
+
+    function Person(){
+        this.eat = function(){
+            this.height ++;
+        }
+    }
+    var person = new Person();
+
+    person.eat();//此时的height++
+    console.log(person.height);// 101
+    console.log(Person.prototype.height);//100
+</script>
+</html>

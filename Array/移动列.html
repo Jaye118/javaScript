@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+		<script type="text/javascript">
+
+		// let name = '姓名'
+		// let sex = '性别'
+		// let date = '出身日期'
+		// let num = '序号'
+		let rows = [
+				["序号", "姓名", "出生日期", "性别", ],
+				["2", "高", "1981-4-8 10:42:35", "女", ],
+				["3", "刘", "1956-2-3", "女", ],
+			]
+		function fn (...arguments) {
+
+			let index = [];
+			for (let i = 0; i < arguments.length; i++) {
+				index.push(rows[0].indexOf(arguments[i]))
+				//index.push(_.findIndex(rows[0], arguments[i])) _Lodash写法
+			}
+
+			let newRows = []
+			for (let j = 0; j < rows.length; j++) {
+				let newList = []
+				for (let k = 0; k< rows[j].length; k ++) {
+					newList.push(rows[j][index[k]])
+					console.log('newRows',newRows)
+				}
+				newRows.push(newList)
+			}
+			return newRows
+			console.log(newRows)
+		}
+		var res = fn('姓名', '性别', '出生日期', '序号')
+		console.log(11111111,res)
+
+    </script>
+</head>
+<body>
+
+
+</body>
+</html>

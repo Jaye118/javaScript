@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    //借助原型，基于已有的对象创建新对象
+    //object.Create(参数1，参数2); 参数1:新对象的原型对象，参数2:为新对象定义额外属性的对象。
+
+    var person = {
+        name: 'person'
+    }
+    //基于已有的person对象，创建一个新的anthorp对象
+    var anthorp = Object.create(person);
+    //相当于如下语句
+    function object(o){
+        function F(){}
+        F.prototype = o;
+        return new F();
+    }
+
+    //得到一个以person为原型的构造函数的实例
+    var anthorp = object(person);
+
+
+    //传入2个参数
+
+    var person = {
+        name :'person'
+    }
+    //基于已有的person对象，创建一个新的anthorp对象,覆盖之前的name，并新增age
+    var anthorp = Object.create(person,{
+        name: {value: 'anthorp'},
+        age: {value: 18}
+    });
+    anthorp.name;//anthorp
+
+
+
+
+
+
+
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>2D基本条形图</title>
+    <script type="text/javascript" src="js/ichart.1.2.min.js"></script>
+</head>
+<body>
+<div id="canvasDiv"></div>
+</body>
+<script>
+
+    $(function(){
+        var data = [
+            {name : 'IE',value : 35.75,color:'#a5c2d5'},
+            {name : 'Chrome',value : 29.84,color:'#cbab4f'},
+            {name : 'Firefox',value : 24.88,color:'#76a871'},
+            {name : 'Safari',value : 6.77,color:'#9f7961'},
+            {name : 'Opera',value : 2.02,color:'#a56f8f'},
+            {name : 'Other',value : 0.73,color:'#6f83a5'}
+        ];
+
+        new iChart.Bar2D({
+            render:'canvasDiv', //render渲染
+            data:data,
+            title:'标题：排行榜',
+            showpercent:true, //是否显示为百分比值。(默认为false)
+            decimalsnum:2,  //百分比小数点精度(小数点后几位)。(默认为 1)
+            width:800,
+            height:400,
+            coordinate:{  //坐标
+                scale:[{  //配置
+                    position:'bottom',
+                    start_scale:0,
+                    end_scale:40,
+                    scale_space:8,
+                    listeners:{  //事件的配置项。(默认为null)
+                        parseText:function(t,x,y){
+                            return{text:t+"%"}
+                        }
+                    }
+                }]
+            }
+        }).draw();
+
+    })
+</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+        //预编译4步
+		/*
+			1.创建AO对象
+			2.找形参和变量声明，将形参名和变量作为AO属性名，值为undefined
+			3.将实参和形参统一
+			4在函数体里找到函数声明，值赋予函数体
+		*/
+		function fn(a){
+			console.log(a);//function
+			var a = 123;   //a->123
+			console.log(a);//123
+			function a (){};//已提升
+			console.log(a); //123
+
+			var b = function(){}; //b->function
+			console.log(b);//function
+			function d(){};
+		}
+		fn(1);
+
+		/*
+		AO{   2 找声明       3 实参形参统一     4函数声明        5执行
+			a:undefined   1                     function	     function
+			b:undefined   undefined                              function
+			                                    d:function
+		}
+		
+		*/
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

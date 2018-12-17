@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="js/ichart.1.2.min.js"></script>
+</head>
+<body>
+    <div id="canvasDiv"></div>
+</body>
+<script>
+    var data=[
+        {name:'一',value:17, color:"#a5c2de"},
+        {name:'二',value:18, color:"#76a871"},
+        {name:'三',value:25, color:"#76a871"},
+        {name:'四',value:14, color:"#76a871"},
+        {name:'五',value:13, color:"#9f7961"},
+        {name:'六',value:12, color:"#a56f8f"},
+    ];
+    $(function(){
+
+        var chart = new iChart.Column2D({
+            render: 'canvasDiv', //设置标题
+            data: data,
+            title : '柱状图哦',
+            width:800,
+            height:500,
+            //shadow:true,
+            shadow_color:'#c7c7c7',
+            coordinate:{//坐标
+                scale:[{
+                    position:'left',
+                    start_scale:0,//开始刻度
+                    end_scale:30,//结束刻度
+                    listeners:{//配置事件
+                        parseText:function(t,x,y){
+                            return{text:t+"cc"}
+                        }
+                    }
+                }]
+            }
+        });
+        //调用绘图方法 绘图
+        chart.draw();
+    })
+</script>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+   //寄生组合式继承：借用构造函数来继承属性，通过原型链混成来继承方法。
+   //不必在子类原型中调用超类的构造函数。使用寄生继承来继承超类的原型，再将结果制定给子类的原型。
+
+   // 寄生组合式继承
+   function inheritProto(Sub, Super){
+       //根据Super的原型创建一个新的对象proto
+       var proto = object(Super.prototype);
+       //增强新对象，为其赋construtor值
+       proto.constructor = Sub;
+       //将新对象赋值给子类的原型。
+       Sub.prototype = proto;
+   }
+   //使用
+   //Super中定义属性name
+   function Super(name){
+       this.name = name;
+       this.color = ['red','green'];
+   }
+   //Super的原型中定义方法
+   Super.prototype.sayname = function(){
+       console.log(this.name);
+   };
+   function Sub(name, age){
+       //通过构造函数的方式继承Super的属性,只在此处调用一次Super构造函数
+       Super.call(this, name);
+       //定义自己的属性
+       this.age = age;
+   }
+   //调用函数，实现继承。代替之前的Sub.prototype = new Super();语句，防止Super构造函数调用两次
+   inheritProto(Sub,Super);
+
+
+
+
+   // 高级程序书 例子
+   function inheritPrototype(subType, superType){
+       var prototype = object(superType.prototype); // 1创建超类型原型的一个副本
+       prototype.constructor = subType; // 为创建的副本 添加consstuctor属性，弥补重写原型失去默认属性
+       subType.prototype = prototype; // 将副本赋值给 子类型的原型
+   }
+
+   function superType (name){
+       this.name = name;
+       this.color = ["red", "blue"]
+   }
+   superType.prototype.sayName = function(){
+       alert(this.name)
+   }
+   function subType(name, age){
+       superType.call(this,name);
+       this.age = age;
+   }
+    inheritPrototype(subType, superType);
+    subType.prototype.sayAge = function (){
+        alert(this.age);
+    }
+
+</script>
+</html>

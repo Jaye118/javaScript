@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        
+    </style>
+    <script type="text/javascript">
+        function Deng(name, wife){
+			var prewife = "xiaozhang";
+
+			this.name = name;
+			this.wife = wife;
+			this.divorce = function(){
+				this.wife = prewife;
+			}
+			this.changePreWife = function (target){
+				prewife = targer;
+			}
+			this.sayPreWife = function (){
+				console.log(prewife);
+			}
+		}
+
+		var deng = new Deng("deng", "liu")
+		//控制台依次输入
+		//deng.wife   liu
+		//deng.divorce
+		//deng,wife   xiaozhang
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

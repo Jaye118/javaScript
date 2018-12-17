@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+	/*
+	 也称 伪经典继承
+	 思路：使用 原型链 实现对 原型 属性和方法的继承；通过构造函数 实现对 实例属性 的继承
+	 既通过 在原型上定义方法 实现了函数复用，又能保证每个实例都有自己的属性
+	*/
+	function SuperType(name) {
+		this.name = name;
+		this.color = ["red", "blue"]
+	}
+	SuperType.prototype.sayName = function () {
+		alert(this.name)
+	}
+
+	function SubType(name, age) {
+		// 继承属性
+		SuperType.call(this, name);
+		this.age = age;
+	}
+	//继承方法
+	SubType.prototype = new SuperType();
+	SubType.prototype.constructor = SubType;
+	SubType.prototype.sayAge = function () {
+		alert(this.age);
+	}
+
+	var instancel = new SubType("hhh", 29);
+	instancel.color.push("block");
+	alert(instancel.color);// red blue block
+	instancel.sayName();// hhh
+	instancel.sayAge();// 29
+
+	var instancel2 = new SubType("xxx", 10);
+	alert(instancel2.color);// red blue block
+	instancel2.sayName();// xxx
+	instancel2.sayAge();// 10
+
+</script>
+
+</html>

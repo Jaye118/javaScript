@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>拆分两个表格</title>
+  <script type="text/javascript">
+    let sheet1 = {
+      rows: [
+        ["NAME", "IN_DEPT", "TYPE"],
+        ["佟", "呼", "W"],
+        ["夏", "放", "N"]
+      ]
+    };
+
+    let sheet2 = {
+      rows: [
+        ["编码", "名称", "类别"],
+        ["EB", "呼", 1],
+        ["56", "放", 0]
+      ]
+    };
+
+    function fn(sheet1, sheet2) {
+      let rows1 = sheet1.rows;
+      let len1 = rows1.length;
+      let typeIndex = rows1[0].indexOf("TYPE");
+
+      let WArr = []; // 外科集合
+      let NArr = []; // 内科集合
+      for (let i = 1; i < len1; i++) {
+        let cur = rows1[i];
+        let type = cur[typeIndex];
+        if (cur === "W") {
+          WArr.push(cur);
+        } else if (cur === "N") {
+          NArr.push(cur);
+        }
+      }
+      return [WArr, NArr] 
+    }
+
+    console.log(fn(sheet1, sheet2))
+    // 输出
+    // rows: [
+    //   ["NAME", "IN_DEPT", "科室类别"],
+    //   ["佟", "呼", 1],
+    //   ["夏", "放", 0]
+    // ]
+  </script>
+</head>
+
+<body>
+
+
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            position:absolute;   //必不可少
+            left:50%;
+            top:50%;
+        }
+    </style>
+</head>
+<body>
+<div id="toRight">右移</div>
+</body>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    $(function(){
+
+        $("#toRight").animate({
+            left:"+=100px"
+        },3000);
+        //3000ms,代表在3s内完成该动画
+    })
+</script>
+</html>

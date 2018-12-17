@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+
+</body>
+
+<script>
+    Grand.prototype.lastName = "deng";
+    function Grand(){}
+
+    var grand = new Grand();
+
+    Father.prototype = grand;
+    function Father(){
+        this.name = 'xuming';
+    }
+
+    var father = new Father();
+
+    Son.prototype = father;
+    function Son(){
+        this.hobbit = "smoke";
+    }
+
+    var son = new Son();
+    console.log(son.lastName);//一层一层查找  deng
+</script>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+</body>
+
+<script type="text/javascript">
+    var bar = {a:"002"};//被覆盖 为{a:"a"}
+    function print(){
+        bar.a = "a";//声明在了window
+        Object.prototype.b = "b";
+        return function inner(){
+            console.log(bar.a);//a
+            console.log(bar.b);//b
+        }
+    }
+    print()();
+
+</script>
+</html>

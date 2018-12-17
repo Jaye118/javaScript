@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+       //按需加载：异步加载 demo.js文件
+	   /*
+		function test(){
+			console.log(1)
+		}
+	   
+	   */
+	   function loadScript(url, callback){
+			var script = document.createElement('script');
+			script.type = "text/javascript";
+			
+			if(script.readState){
+				script.onreadystatechange = function(){// IE
+					if(script.readyState == 'complete'|| script.readyState == 'loaded'){//readyState在ie中为一个属性
+						callback();//方法二（不推荐）：eval(callback);
+						//方法三：tools[callback]()
+					}
+				}
+			}else{
+				script.onload = function(){
+					callback();//eval(callback);
+					//方法三：tools[callback]()
+				}
+			}
+			script.src = url;//先绑定事件，再加载文件
+			document.head.appendChild(script);
+	   }
+
+	//控制台调用: 方法一
+	//loadScript(demo.js, function(){ test() }) 函数引用，不报错
+	//loadScript(demo.js, test()) 报错，test没有声明
+	
+	//方法二：字符串
+	//loadScript(demo.js, "test")
+
+	//方法三:函数库改为
+	/*
+	var tools = {
+		test:function(){
+			console.log(1)
+		},
+		demo:function(){
+		}
+	}
+	
+	*/
+	//loadScript(demo.js, "test")
+
+    </script>
+</head>
+<body>
+
+
+</body>
+</html>

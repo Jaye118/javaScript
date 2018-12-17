@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        
+    </style>
+    <script type="text/javascript">
+        function a (){
+			var num = 100;
+			function b(){
+				num ++;
+				console.log(num)
+			}
+			return b;
+		}
+		var demo = a();
+		demo();//生成aAO：此时num=101
+		demo();//b仍旧在aAO里生成，所以num=102
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

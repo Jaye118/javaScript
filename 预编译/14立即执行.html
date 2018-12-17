@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript">
+//预编译4步
+/*
+	1.创建GO对象| AO
+	2.找形参和变量声明，将形参名和变量作为AO属性名，值为undefined
+	3.将实参和形参统一
+	4在函数体里找到函数声明，值赋予函数体
+*/
+
+(function func(){
+	var a = b = 'res'; 
+
+})();
+console.log(b);//单独执行b可输出 b=res，全局变量，而a是局部的
+console.log(a);// a is not defined  导致直接报错，b也不会执行
+
+
+
+</script>
+</head>
+<body>
+    
+</body>
+</html>

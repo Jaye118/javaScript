@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: #f4ffd7;
+            overflow: scroll;
+        }
+        .na{
+            width: 35px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div"></div>
+
+    <img src="imgage/1.png" alt="" width="30px" id="img" index="0"/>
+    <input type="text" id="inp"/>
+    <input type="button" value="提交" id="btn"/>
+
+
+    <script>
+        var obtn = document.getElementById("btn");
+        var oinp = document.getElementById("inp");
+        var odiv = document.getElementById("div");
+        var oimg = document.getElementById("img");
+        var imgarr = ["imgage/1.png","imgage/2.png","imgage/3.png"];
+
+        /*点击按钮，获取到文本框的值，将值加入到div里面*/
+        obtn.onclick = function(){
+            //获取到文本框的值
+            var value = oinp.value;
+
+            //创建一个p标签，将内容放在p标签内部，放在div里
+            var op = document.createElement("p");
+            var oa = document.createElement("a");
+            var oimg1 = document.createElement("img");
+            var index = oimg.getAttribute("index");
+            var textNode = document.createTextNode(value);
+
+            oimg1.setAttribute("src",imgarr[parseInt(index)]);
+            oimg1.setAttribute("class","na");
+            oa.innerHTML = "删除";
+            oa.href="javascript:";
+            oa.onclick = function(){
+                //this表示当前的a标签对象，点击删除要删的是op
+                //removeChild  找到对象删除里面的字节点
+                odiv.removeChild(this.parentNode);
+            }
+            op.appendChild(oimg1);
+            op.appendChild(textNode);
+            op.appendChild(oa);
+
+            odiv.appendChild(op);
+            oinp.value = "";
+        }
+
+        oimg.onclick = function(){
+            var i = this.getAttribute("index");
+            i = parseInt(i);
+            if(i<imgarr.length-1){
+                ++i;
+            }else{
+                i=0;
+            }
+            this.setAttribute("index",i);
+            this.setAttribute("src",imgarr[i]);
+        }
+
+    </script>
+</body>
+</html>

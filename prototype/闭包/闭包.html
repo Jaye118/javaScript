@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        p{ background:gold; }
+    </style>
+    <script type="text/javascript">
+        function init(){
+            var pAry = document.getElementsByTagName("p");
+            for( var i=0;i< pAry.length;i++ ){
+                pAry[i].onclick = function (){
+                    alert(i)
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="init();">
+    <p>0</p>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+</body>
+</html>

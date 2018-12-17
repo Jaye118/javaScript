@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+   //寄生继承：创建一个用于封装继承过程的函数，在函数内部增强对象。并返回对象
+
+    //创建一个用于封装继承过程的函数，传入obj
+    function create(obj){
+        //通过调用object方法以obj为基础创建一个新对象。此处object表示任何能够返回新对象的函数
+        var clone = object(obj);
+        clone.sayHi = function(){ //以 为对象新增方法的方式 增强对象
+            console.log('hi')
+        };
+        return clone  //返回这个对象
+    }
+
+    //一个基础对象person
+    var person = {
+        name: 'person'
+    };
+
+    //基于基础对象使用寄生模式生成的新对象
+    var hh = create(person);
+    hh.sayHi();
+
+
+</script>
+</html>

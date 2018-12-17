@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    var obj1 = {name:'obj1',fn:function(){ document.write(this.name); }}
+	var obj2 = {name:'obj2'};
+	var obj3 = {name:'obj3'};
+	obj1.fn();
+	var newFn = obj1.fn;
+	newFn(); //obj1
+	newFn.call(obj2);//obj2
+	obj3.fn = newFn;
+	obj3.fn();//obj3
+
+
+</script>
+</html>

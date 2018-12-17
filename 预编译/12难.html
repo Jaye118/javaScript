@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript">
+//预编译4步
+/*
+	1.创建GO对象| AO
+	2.找形参和变量声明，将形参名和变量作为AO属性名，值为undefined
+	3.将实参和形参统一
+	4在函数体里找到函数声明，值赋予函数体
+*/
+
+/*
+GO{     2 找声明      3 实参形参统一     4函数声明        5执行
+     
+
+}	
+*/
+
+var str = false + 1;	//0+1=1
+console.log(str);//1
+var demo = false == 1;	
+console.log(demo);	//false
+if( typeof(a) && - true + (+undefined) + "" ){  //undefind && "undefined"
+ //"undefind"  &&	-1  +  NaN   +       ""     
+ //		        	-1+NaN = NaN +       "" = "NaN"		
+ //"undefined" &&   "NaN" -> true
+	console.log("基础扎实")
+}
+if( 11 + "11" * 2 == 33 ){
+  //11 +  (11*2)=22    "11"进行乘法时转换成数字
+  //33
+	console.log("基础扎实")
+}
+	!!" " + !!"" - !!false||console.log("hhhhhh");
+//  !!true + false - false 
+//   1+0-0=1 之后的不执行
+	false || console.log("xx")
+	
+
+
+/*
+AO{     2 找声明      3 实参形参统一     4函数声明        5执行
+
+}	
+*/
+
+
+
+
+
+
+</script>
+</head>
+<body>
+    
+</body>
+</html>

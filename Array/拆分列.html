@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>拆分两个表格</title>
+  <script type="text/javascript">
+    let sheet1 = {
+      rows: [
+        ["uid",	"subject_name",	"subject_id_type",	"subject_id_code",	"group",	"enrolled_at",	"event",	"drug_stimulating:0:drug_class",	"drug_stimulating:0:drug_dosage"],
+        ["1",	"梁",	"身",	"6",	"IVF",	"2018/10/24 18:09:00",	"-3",	"素, 芬",	"12, 20"],
+        ["7",	"燕",	"身",	"1",	"IVF",	"2018/10/24 18:09:00",	"-1", "芬",	"14"],
+        ["9",	"茹",	"身",	"0",	"IVF",	"2018/10/24 18:09:00",	"-1", "康, 芬, 素", "20, 22, 36"]
+      ]
+    };
+
+    function fn(sheet1) {
+      let rows = sheet1.rows;
+      let len = rows.length;
+      let drugsTypeIndex = rows[0].indexOf("drug_stimulating:0:drug_class");
+
+      let newRows = [];
+      for (let i = 3; i < len; i++) {
+        let cur = rows[i];
+        let drugsType = cur[drugsTypeIndex]; 
+        let drugsDose = cur[drugsTypeIndex + 1]; 
+        
+        if ( drugsType.indexOf(",") !== -1) {
+          let splitLen = drugsType.split(",").length; 
+          for (let j = 0; j < splitLen; j++) {
+           
+            // cur.splice(drugsTypeIndex, 2, drugsType.split(",")[j], drugsDose.split(",")[j]);
+            let copy = cur.slice(0, cur.length - 2);
+            let drugsTypeContent = drugsType.split(",")[j];
+            let drugsDoseContent = drugsDose.split(",")[j]
+            copy.splice(cur.length - 2, 0, drugsTypeContent, drugsDoseContent)
+            newRows.push( copy );
+            // console.log('xxxxxx', newRows)
+          }
+        } else {
+          newRows.push(cur)
+        }
+        
+      }
+      console.log('--newRows----', newRows)
+    }
+    console.log(fn(sheet1))
+
+  </script>
+</head>
+
+<body>
+
+
+</body>
+
+</html>

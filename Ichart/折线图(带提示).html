@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="js/ichart.1.2.min.js"></script>
+</head>
+<body>
+    <div id="canvasDiv"></div>
+</body>
+<script>
+
+    var data = [
+        {
+            name : '上海',
+            value:[4,16,18,20,32,36,38,38,36,26,20,14],
+            color:'#dad81f'
+        },
+        {
+            name : '北京',
+            value:[2,12,14,20,28,32,34,36,33,24,14,4],
+            color:'#1f7e92'
+        },
+        {
+            name : '西安',
+            value:[1,12,18,20,28,34,36,34,31,27,24,6],
+            color:'#76a871'
+        },
+        {
+            name : '天津',
+            value:[3,13,14,20,28,32,34,36,30,24,14,4],
+            color:'#6f83a5'
+        }
+    ];
+
+    var labels = ["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"];
+
+    $(function(){
+        var chart = new iChart.Area2D({
+            render : 'canvasDiv',
+            data: data,
+            title : '四城市2012年平均温度情况',
+            width : 800,
+            height : 400,
+            area_opacity:0.15,
+            legend : {
+                enable : true,
+                // row:1,//图例的行数。(默认为'max') 如果设置为'max',则其依赖配置项column
+                // column : 'max',//图例的列数。(默认为1) 如果设置为'max',则其依赖配置项row
+                legend_space : 20,// 同一行上图例之间的距离。单位px。(默认为5)
+                // valign:'top',//图例在图表中垂直对齐方式(默认为middle)可选值为:top;'middle' 当配置项align
+                // = 'left|right'时生效 ;'bottom'
+                align : 'right', // 图例在图表中水平对齐方式。(默认为'right')可选值为：'left''center'
+                // 当配置项valign = 'top|bottom'时生效。'right'
+                sign : 'bar',// 图例中小图标的样式(默认为'square')可选值为：'round''square''round-bar'
+                // 'square-bar'
+                sign_space : 10,// 小图标与文本之间的间距。单位px。(默认为5)
+                //background_color : null,// 设置透明背景
+                // offsetx:10,//设置x轴偏移，满足位置需要
+                border : {
+                    enable : false
+                },
+
+                text_with_sign_color : true,// 是否文字的颜色与小图标的颜色一致。(默认为false)
+                listeners : {
+                    mouseover:function(r,e,m){
+                        //alert(m.targer.name);
+                        //m.target.name.fontsize = 14px;
+                        var nameIndex = $.inArray(m.target.name, nameArr);
+                        drawCanvas(id, data, labels, colorArr, canvasW, canvasH, canvasTitle,nameIndex, false);
+
+                    }
+                }
+            },
+            tip:{
+                enable : true,
+                listeners:{
+                    //tip:提示框对象、name:数据名称、value:数据值、text:当前文本、i:数据点的索引
+                    parseText:function(tip,name,value,text,i){
+                        return "<span style='color:#005268;font-size:11px;font-weight:600;'>"+name+
+                                "</span> <span style='color:#005268;font-size:20px;font-weight:600;'>"+value+"℃</span>";
+                    }
+                },
+            },
+            sub_option:{
+                label:false
+            },
+            crosshair:{
+                enable:true,
+                line_color:'#62bce9'
+            },
+            coordinate:{
+                axis : {
+                    width : [0, 0, 2, 0]
+                },
+                background_color:'#ffffff',
+                height:'90%',
+                valid_width:'94%',
+                height : 260,
+                scale2grid:false,
+                grids:{
+                    horizontal:{
+                        way:'share_alike',
+                        value:8
+                    }
+                },
+                scale:[{
+                    position:'left',
+                    start_scale:0,
+                    end_scale:40,
+                    scale_space:5,
+                    listeners:{
+                        parseText:function(t,x,y){
+                            return {text:t+"℃"}
+                        }
+                    }
+                },{
+                    position:'bottom',
+                    start_scale:1,
+                    end_scale:12,
+                    parseText:function(t,x,y){
+                        return {textY:y+10}
+                    },
+                    labels:labels
+                }]
+            }
+        });
+        chart.draw();
+    });
+</script>
+</html>

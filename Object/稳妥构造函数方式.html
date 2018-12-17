@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+    /*
+    指没有公共属性，禁止使用this、new
+    */ 
+    function person(name,age,job){
+        var o = new Object();
+        o.name = name;
+        o.age = age;
+        o.job = job;
+        o.sayName = function(){
+            alert(name)
+        }
+        return o;
+    }
+    var person1 = new Person("hh", 29, "设计师");
+    person1.sayName() // 除了调用sayName()方法外，没有其他方式访问数据成员
+
+    
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+</body>
+
+<script>
+    //圣杯模式        son    father
+    function inherit(Target, Origin){
+        function F(){}
+        F.prototype = Origin.prototype;
+        Target.prototype = new F();
+		//son.__proto__ -> new F().__proto__ -> father.prototype
+        Target.prototype.constructor = Target;
+        //uber超类:真正继承至谁
+        Target.prototype.uber = Origin.prototype;
+    }
+
+    Father.prototype.lastName = "Deng";
+    function Father(){
+    }
+    function Son(){
+    }
+
+    inherit(Son , Father);
+    var son = new Son();
+    var father = new Father();
+
+
+
+</script>
+</html>

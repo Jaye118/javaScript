@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div>
+
+    </div>
+
+</body>
+
+<script>
+    window.color = "red";
+    var o = { color: "blue" };
+
+    function sayColor() {
+        alert(this.color)
+    }
+    sayColor(); //red
+
+    sayColor.call(this); // red
+    sayColor.call(window); // red
+    sayColor.call(o); // blue   
+
+
+    // bind()
+    var bindSayColor = sayColor.bind(o);
+    bindSayColor() // blue
+</script>
+
+</html>

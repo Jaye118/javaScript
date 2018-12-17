@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+           var s = "aabbbcdddd";
+           var fres = {};  //用来记录所有的字符的出现频次
+           var maxChar= ''; //用来记录最大频次的字符
+           for( var i=0; i<s.length; i++ ){
+               var char = s[i];
+               if(!fres[char]){
+                   fres[char] = 0;
+               }
+               fres[char] ++;
+               if( maxChar == '' || fres[char] > fres[maxChar] ){
+                   maxChar = char;
+               }
+           }
+           console.log(" 出现次数最多的是"+maxChar + ",共出现" + fres[maxChar] + "次。");
+
+
+
+    </script>
+     </head>
+    <body>
+
+    </body>
+</html>

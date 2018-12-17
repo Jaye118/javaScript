@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+
+</body>
+
+<script>
+    // 方法的重写
+    //Object.prototype.toString = function(){}
+    // Object.prototype 原型链上是有toString方法的
+    Person.prototype = {
+        toString:function(){
+            return 'hhhhh'
+        }
+    };
+
+    function Person(){
+    }
+    var person = new Person();
+
+    console.log(person.toString());// hhhhh
+</script>
+</html>

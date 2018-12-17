@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+<body>
+	<p id="p">这是一行文字，鼠标左键拖动选中文字。</p>
+    
+</body>
+
+<script type="text/javascript">
+	
+	var text = "";
+    var $p = document.getElementById("p");
+	if(document.seletion){
+		text = document.seletion.createRange(); // ie9以下
+	} else {
+		text = document.getSelection(); 
+	}
+	$p.addEventListener("mouseup",function(){
+		console.log(text.toString()) // 注意toString()方法
+	})
+
+	//IE9以下支持：document.selection 　　 
+	//IE9、Firefox、Safari、Chrome和Opera支持：window.getSelection()
+</script>
+</html>

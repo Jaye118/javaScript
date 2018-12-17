@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+        // 需求：如果身份证号相同，NO不相同，则保留时间最早的一条
+
+        let res = {
+            prettyName: "输入.xlsx",
+            sheets: [
+                {
+                    prettyName: "Sheet 1",
+                    rows: [
+                        [
+                            "姓名",
+                            "身份证号",
+                            "NO",
+                            "时间"
+                        ],
+                        [
+                            "章三",
+                            "141026197607277333",
+                            "ZY030001492053",
+                            "2017-7-12 10:27:29"
+                        ],
+                        [
+                            "李四",
+                            "141026197607277333",
+                            "ZY030001492054",
+                            "2018-7-12 10:27:29"
+                        ],
+                    ]
+                }
+            ]
+        }
+
+        function fn(...args) {
+            const inputDrawer = args[0];
+            const scriptFuncOptions = args[1] || {};
+            let res = inputDrawer;
+            // TODO 开始填充你的处理逻辑
+            for (const sheet of res.sheets) {
+                if (sheet.prettyName == "Sheet 1") {
+                    let IDindex = sheet.rows[0].indexOf('身份证号')
+                    let NOindex = sheet.rows[0].indexOf('NO')
+                    let dateIndex = sheet.rows[0].indexOf('时间')
+
+                    for (let i = 1; i < sheet.rows.length; i++) {
+                        let flag = true;
+                        for (let j = i + 1; j < sheet.rows.length; j++) {
+                            if (sheet.rows[i][IDindex] == sheet.rows[j][IDindex] && sheet.rows[i][NOindex] != sheet.rows[j][NOindex]) {
+                                if (new Date(sheet.rows[i][dateIndex]).getTime() < new Date(sheet.rows[j][dateIndex]).getTime()) {
+                                    flag = false
+                                }
+                            }
+                        }
+                        if (flag) {
+                            sheet.rows.splice(i, 1)
+                        }
+                    }
+                    console.log(1111, sheet.rows)
+                }
+            }
+
+
+
+            console.log(2222, res.sheets)
+            return res;
+        }
+        fn(res)
+        // 输出
+        // {
+        //     prettyName: "输入.xlsx",
+        //     sheets: [
+        //         {
+        //             prettyName: "Sheet 1",
+        //             rows: [
+        //                 [
+        //                     "姓名",
+        //                     "身份证号",
+        //                     "NO",
+        //                     "时间"
+        //                 ],
+        //                 [
+        //                     "章三",
+        //                     "141026197607277333",
+        //                     "ZY030001492053",
+        //                     "2017-7-12 10:27:29"
+        //                 ]
+        //             ]
+        //         }
+        //     ]
+        // }
+
+    </script>
+</head>
+
+<body>
+
+
+</body>
+
+</html>

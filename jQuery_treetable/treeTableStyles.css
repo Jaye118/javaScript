@@ -1,0 +1,21 @@
+
+a {
+	color: #c75f3e;
+}
+caption {
+	padding: 0 0 5px 0;	 
+	font: italic 14px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	color: red;
+	text-align: right;
+}
+.active{
+	background:#e7e7e7;
+}
+.checkbox{margin:2px 4px 0 0; background:url(images/grid-checkbox.gif)}
+td.specalt {
+	border-left: 1px solid #C1DAD7;
+	border-top: 0;
+	background: #f5fafa url(images/bullet2.gif) no-repeat;
+	font: bold 12px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	color: #797268;
+}

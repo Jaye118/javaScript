@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script type="text/javascript">
+    // 缩写后面添加一列“检查项目” 
+    // 项目名称和缩写后面添加单位  将检查指标名改成“D-二聚体定量（mg/L）”，简称改成“ D-D（mg/L）”
+    // 
+    const arr = {
+      prettyName: "输入.xlsx",
+      sheets: [
+        {
+          prettyName: "Sheet 1",
+          rows: [
+            ["姓名", "项目名称", "缩写", "单位"],
+            ["李", "D-二聚体定量", "RBC", "mg/L"],
+            ["吴", "*天冬", "AST", "ng/ml"],
+            ["李", "*天冬", "SSS", "ng/ml"],
+          ],
+          reference: [
+            ["", "缩写", "归属类别"],
+            ["血常规:红细胞计数（RBC） (*10<sup>12</sup>/L)", "RBC", "血常规"],
+            ["肝功能:天冬（AST） (IU/L)", "AST", "肝功能"],
+          ]
+        }
+      ],
+    }
+
+    function fn(...args) {
+      const inputDrawer = args[0];
+      const scriptFuncOptions = args[1] || {};
+      let resultDrawer = inputDrawer;
+      // TODO 开始填充你的处理逻辑
+
+      let rows = [];
+      for (const sheet of resultDrawer.sheets) {
+        if (sheet.prettyName == "Sheet 1") {
+          let ref = sheet.reference // 参考数组
+          let abRefIndex = ref[0].indexOf("缩写"); // 参考数组-缩写所在位置
+          rows = sheet.rows;
+          let len = rows.length;
+          let nameIndex = rows[0].indexOf("项目名称");
+          let abIndex = rows[0].indexOf("缩写");
+          let unitIndex = rows[0].indexOf("单位");
+          rows[0].splice(abIndex + 1, 0, "检查项目"); // 表头插入 "检查项目"
+          for (let i = 1; i < len; i++) {
+            rows[i][nameIndex] += "（" + rows[i][unitIndex] + "）";
+            rows[i][abIndex] += "（" + rows[i][unitIndex] + "）";
+            let flag = true
+            for (let j = 1; j < ref.length; j++) {
+              if (ref[j][abRefIndex] == rows[i][abIndex].split("（")[0]) {
+                rows[i].splice(abIndex + 1, 0, ref[j][abRefIndex + 1]);
+                flag = false
+                break
+              }
+            }
+            if (flag) {
+              rows[i].splice(abIndex + 1, 0, "NA"); // 匹配不到缩写 输入 NA
+            }
+          }
+          sheet.rows = rows
+        }
+      }
+      return resultDrawer;
+    }
+
+    fn(arr)
+
+    // 输出
+    // const expectedResult = {
+    //   prettyName: "输入.xlsx",
+    //   sheets: [
+    //     {
+    //       prettyName: "Sheet 1",
+    //       rows: [
+    //         ["姓名", "项目名称", "缩写", "检查项目", "单位"],
+    //         ["李", "D-二聚体定量（mg/L）", "RBC（mg/L）", "血常规", "mg/L"],
+    //         ["吴", "*天冬（ng/ml）", "AST（ng/ml）", "肝功能", "ng/ml"],
+    //         ["李", "*天冬（ng/ml）", "SSS（ng/ml）", "NA", "ng/ml"],
+    //       ]
+    //     }
+    //   ]
+    // };
+  </script>
+</head>
+
+<body>
+
+
+</body>
+
+</html>
