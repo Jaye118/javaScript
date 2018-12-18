@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="./lodash.js"></script>
+  <script type="text/javascript">
+
+    /* 
+      创建一个新数组，返回 过滤掉(不输出) 假值 的新数组
+      例如false, null, 0, "", undefined, 和 NaN 都是被认为是“假值”
+
+       _.compact(array)
+      array (Array): 需要处理的数组
+    */
+
+    var array = [1, false, ''];
+    var res = _.compact(array)
+    console.log(res) // 1
+    
+  </script>
+</head>
+
+<body>
+</body>
+</html>
