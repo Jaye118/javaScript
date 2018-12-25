@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="./lodash.js"></script>
+  <script type="text/javascript">
+
+    /* 
+      _.fill(array, value, [start=0], [end=array.length])
+      使用 value 来填充/替换 array
+
+       _.compact(array)
+      array (Array): 需要填充改变的数组
+    */
+
+    var array = [1, 2, 3];
+    var res = _.fill(array, 'a')
+    console.log(res) // ['a', 'a', 'a']
+
+    _.fill([4, 6, 8, 10], '*', 1, 3)
+    
+  </script>
+</head>
+
+<body>
+</body>
+</html>
