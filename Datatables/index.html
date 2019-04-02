@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link src="jquery.dataTables.min.css"></link>
+    <script src="../jquery-1.11.3.js"></script>
+    <script src="jquery.dataTables.min.js"></script>
+</head>
+<body>
+  <table class=" dataTable" id="myTable">
+      <thead>
+          <tr>
+              <th>User Id</th>
+       
+          </tr>
+      </thead>
+      <!-- <tbody>
+
+              <tr>                       
+                  <td id="${users.userId}">xxxxxxx</td>
+                  <td>hhhhhhhhh</td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+              </tr>
+
+      </tbody> -->
+  </table>       
+  </body>
+<script type="text/javascript">
+  $(document).ready(function() {  
+    $('#myTable').DataTable( {
+//     buttons: [
+//         'selectAll',
+//         'selectNone'
+//     ],
+//     language: {
+//         buttons: {
+//             selectAll: "全选",
+//             selectNone: "全不选"
+//         }
+//     }
+} );
+
+
+  }); 
+</script>
+</html>
