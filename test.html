@@ -11,35 +11,12 @@
 </body>
 <script>
 
-  const getJson = function (url) {
-    const promise = new Promise ((resolve, reject) => {
-      const hander = function () {
-        if (this.readyState !== 4) {
-          return false
-        }
-        if(this.status === 200){
-          resolve(this.response)
-        } else {
-          reject(new Error(this.statusText))
-        }
-      };
-
-      const client = new XMLHttpRequest();
-      client.open("GET", url);
-      client.onreadystatechange = hander;
-      client.responseType = "json";
-      client.setRequestHeader("Accept", "application/json");
-      client.send();
-    });
-
-    return promise;
-  };
-
-  getJson("posts.json").then(function(json){
-    
-  },function(){
-    
-  })
+  for (var i =0; i < 5; i++) {
+    setTimeout(function() {
+      console.log('inner',new Date, i)
+    }, 1000 * i)
+  }
+  console.log('outer' ,i)
 
 </script>
 
