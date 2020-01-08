@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	var format = function (tiem) {
+		var date = new Date(+tiem + 8 * 3600 * 1000)
+		return date.toJSON().substr(0, 19).replace('T', ' ').replace(/-/g, '.') // "2019.12.31 15:17:15"
+		// date.toJSON().substr(0, 19) => "2019-12-31T15:17:15"
+		// date.toJSON().substr(0, 19).replace('T', ' ') => "2019-12-31 15:17:15"
+	}
+
+	var time1 = format(new Date())
+	console.log(time1)
+
+</script>
+</html>

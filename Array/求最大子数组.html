@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+        /*
+        输入是以数字组成的数组，例如 arr = [1, -2, 3, 4, -9, 6].
+        任务是：找出连续的 arr 的子数组，其里面所有项的和最大。
+        写出函数 getMaxSubSum(arr)，用其找出并返回最大和。
+
+        例如：
+        getMaxSubSum([-1, 2, 3, -9]) = 5 (高亮项的加和)
+        getMaxSubSum([2, -1, 2, 3, -9]) = 6
+        getMaxSubSum([-1, 2, 3, -9, 11]) = 11
+        getMaxSubSum([-2, -1, 1, 2]) = 3
+        getMaxSubSum([100, -9, 2, -3, 5]) = 100
+        getMaxSubSum([1, 2, 3]) = 6 (所有项的和)
+
+        如果所有项都是负数，那就一个项也不取（数组是空的），所以返回的是 0
+        */
+
+        // 复杂度 O(n2)
+        // 计算所有可能的子集的和：获取每个元素后，计算它开始所有子数组的和
+        function getMaxSubSum1 (arr) {
+            let maxSum = 0;
+
+            for (let i = 0; i < arr.length; i++) {
+                let sumFixedStart = 0;
+                for (let j = i; j < arr.length; j++) {
+                    sumFixedStart += arr[j];
+                    maxSum = Math.max(maxSum, sumFixedStart);
+                }
+            }
+
+            return maxSum
+        }
+
+        alert( getMaxSubSum1([-1, 2, 3, -9]) ); // 5
+        alert( getMaxSubSum1([-1, 2, 3, -9, 11]) ); // 11
+        alert( getMaxSubSum1([-2, -1, 1, 2]) ); // 3
+        alert( getMaxSubSum1([1, 2, 3]) ); // 6
+        alert( getMaxSubSum1([100, -9, 2, -3, 5]) ); // 100
+
+
+        // 复杂度 O(n)
+        // 遍历数组，让当前局部元素和 保存为变量 s，如果 s 变成负数，则重新分配 s=0.所有 s 中最大值就是答案
+        function getMaxSubSum2 (arr) {
+            let maxSum = 0;
+            let partialSum = 0;
+
+            for (let item of arr) {
+                partialSum += item;
+                maxSum = Math.max(maxSum, partialSum);
+                if (partialSum < 0) partialSum = 0;
+            }
+
+            return maxSum
+        }
+
+        alert( getMaxSubSum2([-1, 2, 3, -9]) ); // 5
+        alert( getMaxSubSum2([-1, 2, 3, -9, 11]) ); // 11
+        alert( getMaxSubSum2([-2, -1, 1, 2]) ); // 3
+        alert( getMaxSubSum2([100, -9, 2, -3, 5]) ); // 100
+        alert( getMaxSubSum2([1, 2, 3]) ); // 6
+        alert( getMaxSubSum2([-1, -2, -3]) ); // 0
+
+    </script>
+</head>
+
+<body>
+
+
+</body>
+
+</html>

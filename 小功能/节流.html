@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>节流</title>
+	<style>
+		#box {
+      width: 500px;
+      height: 500px;
+      background: #ccc;
+      font-size: 40px;
+      text-align: center;
+      line-height: 500px;
+    }
+	</style>
+</head>
+<body>
+	<p>节流</p>
+	<div id="box"></div>
+</body>
+
+<script type="text/javascript">
+
+	// 持续触发并不会执行多次，到一定时间再去执行
+	function throttle (func, delay) {
+		let run = true
+		return function () {
+			if (!run) {
+				return
+			}
+			run = false
+			setTimeout((this, arguments) => {
+				func.apply(this, arguments)
+				run = true
+			}, 1000)
+		}
+	}
+	const box = document.getElementById('box')
+	box.onmousemove = throttle( function (e) {
+		box.innerHTML = `${e.clientX}, ${e.clientY}`
+	}, 1000)
+
+</script>
+</html>

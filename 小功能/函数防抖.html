@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+	<style>
+		#box {
+      width: 500px;
+      height: 500px;
+      background: #ccc;
+      font-size: 40px;
+      text-align: center;
+      line-height: 500px;
+    }
+	</style>
+</head>
+<body>
+	<p>函数防抖</p>
+	<div id="box"></div>
+	<br>
+	<br>
+	<div id="debounce" style="width: 100px; height: 100px; border: 1px solid red; overflow-y: scroll;">
+		例子 2
+		<div style="height: 1000px;"></div>
+	</div>
+</body>
+
+<script type="text/javascript">
+
+	// 步骤1：持续触发，不执行
+	// 步骤2：不触发一段时间后，再去执行
+	// 巧用 setTimeout 做缓存池，轻松清除待执行的代码
+	// 例子1
+	function debounce (func, delay) {
+		let timeout = null
+		return function () {
+			clearTimeout(timeout) // 持续触发，清除定时器
+			timeout = setTimeout(() => {
+				func.apply(this, arguments)
+			}, delay)
+		}
+	}
+	const box = document.getElementById('box')
+	box.onmousemove = debounce( function (e) {
+		box.innerHTML = `${e.clientX}, ${e.clientY}`
+	}, 1000)
+
+
+	// 例子2
+	let timer = false
+	document.getElementById('debounce').onscroll = function () {
+		clearTimeout(timer)
+
+		timer = setTimeout(function () {
+			console.log('函数防抖')
+		}, 300)
+	}
+
+</script>
+</html>
