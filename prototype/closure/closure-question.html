@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>关于闭包的几个面试题</title>
+    <script type="text/javascript">
+        // 先来了解下this对象
+        /* this 对象是在运行时基于函数的执行环境绑定的：
+           在全局函数中， this 等于 window，
+           而当函数被作为某个对象的方法调用时， this 等于那个对象。
+           不过，匿名函数的执行环境具有全局性，因此其 this 对象通常指向 window。
+         */
+
+        // 习题1
+        function func1() {
+            alert(this);
+        }
+        func1();//window
+        // 直接定义函数func1,相当于在全局环境下定义，所以this指向window。
+
+        // 习题2
+        var o = {
+            name: "object",
+            func2: function(){
+                alert(this);
+            }
+        };
+        o.func2();// object
+        // 此时，函数通过对象o调用，所以this指向object
+
+        // 习题3
+        var name = "The Window";
+        var object = {
+            name: "My Object",
+            getNameFunc: function(){
+                return function(){
+                    return this.name;
+                }
+            }
+        }
+        console.log( object.getNameFunc()() ); // "The Window"（在非严格模式下）
+        // object.getNameFunc()返回的是匿名函数，此时不是通过getNameFunc()函数调用的，所以this指向window。
+
+        // 习题4
+        var name = "The Window";
+        var object = {
+            name: "object",
+            getNameFunc: function(){
+                var that = this;
+                return function(){
+                    return that.name;
+                }
+            }
+        }
+        console.log( object.getNameFunc()() )// object
+        //在getNameFunc()中this指向的My Object，所有先赋值给that，
+        // 然后匿名函数返回时，that的值仍然保持，所以最后返回的是My Object。
+    </script>
+</head>
+<body>
+
+</body>
+</html>

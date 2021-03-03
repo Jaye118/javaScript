@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script>
+    /* 1 */
+    var arr1 = "john".split(""); // arr1 :j o h n
+    var arr2 = arr1.reverse();//arr2 : n h o j  arr1也已经翻转为n h o j
+    var arr3 = "johns".split(""); // arr3: j o h n s
+
+    arr2.push(arr3);//arr: n h o j [ j o h n s]
+    console.log("arr1:length=" + arr1.length + " last=" + arr1.slice(-1));//arr1:length=5 last=j,o,h,n,s
+    console.log("arr2:length=" + arr2.length + " last=" + arr2.slice(-1));//arr2:length=5 last=j,o,h,n,s
+
+    /*
+      split:分割字符串
+      reverse()  并不只返回反顺序的阵列，它也反转了数组本身的顺序
+      slice() 可作为引用数组末尾元素的方法：例如，-1下标表示数组中的最后一个元素。
+
+      reverse() 方法返回一个到数组本身的引用（在这种情况下即，arr1）。
+      其结果为，arr2 仅仅是一个到 arr1的引用（而不是副本）。
+      因此，当对 arr2做了任何事情（即当我们调用 arr2.push(arr3);）时，arr1 也会受到影响，
+      因为 arr1 和 arr2 引用的是同一个对象。
+
+
+      传递数组到另一个数组的 push() 方法会让整个数组作为单个元素映射到数组的末端。
+      其结果是，语句 arr2.push(arr3);
+      在其整体中添加 arr3 作为一个单一的元素到 arr2 的末端
+     （也就是说，它并没有连接两个数组，连接数组是 concat() 方法的目的）。
+
+    */
+
+
+
+    /* 2 输出什么*/
+    for (var i = 0; i < 5; i++) {
+        setTimeout(function() {
+            console.log(i);
+        }, i * 1000 );
+    }
+
+    /*
+    * 上面的代码不会按预期显示值0，1，2，3，和4，而是会显示5，5，5，5，和5。
+    * 原因是，在循环中执行的每个函数将整个循环完成之后被执行，因此，将会引用存储在 i中的最后一个值，那就是5。
+    * */
+    //闭包可以通过为每次迭代创建一个唯一的范围，存储范围内变量的每个唯一的值，来防止这个问题
+    for (var i = 0; i < 5; i++) {
+        (function(x) {
+            setTimeout(function() {
+                console.log(x);
+            }, x * 1000 );
+        })(i);
+    }
+
+
+
+
+
+</script>
+</html>
